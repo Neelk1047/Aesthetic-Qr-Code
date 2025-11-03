@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Create New QR Code{% endblock %}
+
+{% block content %}
+<div class="container">
+    <section class="hero">
+        <div class="hero-left">
+            <h2>Create beautiful, branded QR codes instantly</h2>
+            <p>Aesthetic QR Code lets you embed logos, apply stylish themes, and serve QR landing pages — all from your machine. Fast, secure and designer-friendly.</p>
+            <div class="cta-row">
+                <a class="cta-primary" href="#qrForm">Get Started</a>
+                <a class="cta-secondary" href="{{ url_for('features') }}">See Features</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="mock-qr card">
+                <img src="{{ url_for('static', filename='styled_qr.png') }}" alt="Sample QR">
+            </div>
+        </div>
+    </section>
+
+    <section class="qr-form" id="qrForm">
+    <h2>Generate QR Codes with Aesthetic QR Code</h2>
+    <p id="errorMessage" class="error-message" style="display: none;"></p>
+
+    <form id="createForm" enctype="multipart/form-data">
+        <label for="title">QR Code Title (e.g., My Portfolio Link)</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="image">Upload Logo/Image (Used for styling and center logo)</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+
+        <label>Destination Links (The user sees these choices after scanning)</label>
+        <div id="links-container">
+            </div>
+        <button type="button" id="add-link-btn" class="btn-secondary">Add Another Link</button>
+
+        
+
+        <label>Select QR Code Style(s) to Generate</label>
+        <div class="style-options">
+            {% for style in styles %}
+            <div class="style-option">
+                <input type="checkbox" id="style-{{ style }}" name="styles" value="{{ style }}">
+                <label for="style-{{ style }}" style="text-transform: capitalize;">{{ style }}</label>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <button type="submit" class="btn-generate">Generate QR Codes</button>
+    </form>
+</section>
+
+<section class="qr-results">
+    <h2>Generated QR Codes</h2>
+    <div id="qrContainer" class="qr-container">
+        <p>Your generated QR codes will appear here after submission.</p>
+    </div>
+</section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+{% endblock %}

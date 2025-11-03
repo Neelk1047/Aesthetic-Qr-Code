@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Features & Pricing{% endblock %}
+
+{% block content %}
+<section class="features-section">
+    <h2 class="section-title">Unlock Aesthetic QR Code Features</h2>
+    <p class="section-subtitle">Choose the plan that fits your needs for dynamic, style-driven QR codes.</p>
+    
+    <div class="feature-cards-container">
+        <div class="feature-card">
+            <h3>Custom Logo Integration</h3>
+            <p>Embed your brand logo directly into the QR code for a professional, branded look.</p>
+            <span class="icon-check">✓</span>
+        </div>
+        
+        <div class="feature-card">
+            <h3>Multi-Link Landing Page</h3>
+            <p>Create a single, smart QR code that leads to a stylish landing page with multiple options.</p>
+            <span class="icon-check">✓</span>
+        </div>
+        
+        <div class="feature-card">
+            <h3>Advanced Analytics</h3>
+            <p>Track total scans and individual link clicks right from your personalized dashboard.</p>
+            <span class="icon-check">✓</span>
+        </div>
+    </div>
+    
+    <div class="pricing-card">
+        <h3>Pro Plan (Coming Soon)</h3>
+        <p class="price-tag">$4.99/month</p>
+        <p>Unlimited QR generations, custom colors, and detailed location-based analytics.</p>
+        <a href="{{ url_for('register') }}" class="btn-generate">Get Started Now</a>
+    </div>
+    
+</section>
+{% endblock %}

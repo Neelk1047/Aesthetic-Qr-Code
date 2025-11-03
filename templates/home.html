@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome to Aesthetic QR Code{% endblock %}
+
+{% block content %}
+<div class="container">
+  <section class="hero">
+    <div class="hero-left">
+  <h2>Welcome to Aesthetic QR Code</h2>
+  <p>Design eye-catching QR codes, embed your logo, and track scans — all from a simple interface. Aesthetic QR Code makes branded QR creation fast and beautiful.</p>
+      <div class="cta-row">
+        <a class="cta-primary" href="{{ url_for('create') }}">Create a QR</a>
+        <a class="cta-secondary" href="{{ url_for('features') }}">Explore Features</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="mock-qr card">
+        <img src="{{ url_for('static', filename='styled_qr.png') }}" alt="Sample QR">
+      </div>
+    </div>
+  </section>
+
+  <section class="features-section">
+  <h3 class="section-title">Why Aesthetic QR Code?</h3>
+    <p class="section-subtitle">Create branded QR codes, track engagement, and share secure landing pages — no design skills required.</p>
+
+    <div class="feature-cards-container">
+      <div class="feature-card">
+        <h3>Brand Integration</h3>
+        <p>Embed your logo at the center of the QR and choose from elegant styles that match your brand.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Track Clicks</h3>
+        <p>Each link click is tracked so you can see which options perform best.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Scannable Designs</h3>
+        <p>Design-forward QR codes that remain compatible with most scanners.</p>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

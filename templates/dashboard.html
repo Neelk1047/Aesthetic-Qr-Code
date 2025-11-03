@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}My Dashboard{% endblock %}
+
+{% block content %}
+<section class="dashboard container">
+    <div class="card" style="padding:18px;margin-bottom:18px;display:flex;justify-content:space-between;align-items:center;gap:12px">
+        <div>
+            <h2 style="margin:0">My QR Codes</h2>
+            <p style="margin:0;color:var(--muted);font-size:0.95rem">Manage and download QR images you've generated</p>
+        </div>
+        <div>
+            <a class="btn-secondary" href="{{ url_for('create') }}">Create New QR</a>
+        </div>
+    </div>
+    {% if not user_qrs %}
+    <p>You haven't created any QR codes yet. <a href="{{ url_for('create') }}">Create your first one!</a></p>
+    {% else %}
+        <div class="qr-list">
+            {% for qr in user_qrs %}
+            <div class="qr-list-item">
+                <div class="qr-info">
+                    <h3>{{ qr.title }}</h3>
+                    <p>Landing Page: <a href="{{ url_for('qr_landing', unique_id=qr.unique_id) }}">{{ url_for('qr_landing', unique_id=qr.unique_id, _external=True) | truncate(50) }}</a></p>
+                    <p>Total Scans: <strong>{{ qr.scan_count }}</strong></p>
+                    <h4>Links:</h4>
+                    <ul>
+                        {% for link in qr.links %}
+                        <li>{{ link.label }} ({{ link.click_count }} clicks)</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="qr-images">
+                    {% for file in qr.generated_files %}
+                        <div class="qr-thumb">
+                            <img src="{{ url_for('static', filename=file.file_path) }}" alt="{{ file.style }} QR">
+                            <a href="{{ url_for('static', filename=file.file_path) }}" download="qr_{{ qr.unique_id }}_{{ file.style }}.png">Download {{ file.style|capitalize }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</section>
+{% endblock %}
