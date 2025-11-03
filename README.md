@@ -16,7 +16,7 @@ That's exactly what this project does! "Aesthetic QR Code Generator" lets you cr
 - **Color Extraction** – pick an image/logo, and the QR color will match  
 - **Local Access Only (for now)** – QR works only on the same Wi-Fi  
 
-## Teckstack
+## Techstack
 
 I built this with the help of **Python and web technologies**:
 
